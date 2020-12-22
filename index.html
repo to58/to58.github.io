@@ -15,6 +15,23 @@
 
     <title>Техосмотр в Земетчино</title>
 
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7bc89204-b3da-4373-9a31-0b204b1663d4&lang=ru_RU" type="text/javascript"></script>
+
+    <!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+	   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+	   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+	   ym(70653307, "init", {
+	        clickmap:true,
+	        trackLinks:true,
+	        accurateTrackBounce:true
+	   });
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/70653307" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
   </head>
   <body>
 		
@@ -27,6 +44,14 @@
 	      				<p class="text-muted">Телефон: <b><a href="tel:">xxxxxxxx</a></b></p>
 	    			</div>
 	  			</section>
+
+	  			<div id="map" style="height: 400px"></div>
+	  			<div style="height: 100px"></div>
+
+	  			<h3 class="jumbotron-heading">О станции технического осмора</h3>
+		  		<p>Аттестат аккредитации Оператора технического осмотра Сипягина Алексея Сергеевича, № в реестре ОТО 05822 от 17.10.2012.</p>
+		  		<p>Производим проверку легкового и грузового транспорта на современном оборудовании отечественного и импортного производства.</p>
+		  		<div style="height: 30px"></div>
 
 	  			<!-- Root element of PhotoSwipe. Must have class pswp. -->
 				<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -98,45 +123,33 @@
 	    			</figure>
   				</div>
 
-		  		<h3 class="jumbotron-heading">О станции технического осмора</h3>
-		  		<p>Аттестат аккредитации Оператора технического осмотра Сипягина Алексея Сергеевича, № в реестре ОТО 05822.</p>
-		  		<p>Производим проверку легкового и грузового транспорта на современном оборудовании отечественного и импортного производства.</p>
-		  		<div style="height: 30px"></div>
-
 		  		<h3 class="jumbotron-heading">Режим работы</h3>
 		  		
-		  		<table class="table table-striped table-sm">
-				  <tbody>
-				    <tr>
-				      <th scope="row">ПН</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">ВТ</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">СР</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">ЧТ</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">ПТ</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">СБ</th>
-				      <td>C 08:00 до 17:00; Перерыв с 12:00 до 13:00</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">ВС</th>
-				      <td>Нерабочий день</td>
-				    </tr>
-				  </tbody>
+		  		<table class="table">
+					<thead>
+    					<tr class="table-info">	
+      						<th scope="col">ПН</th>
+      						<th scope="col">ВТ</th>
+      						<th scope="col">СР</th>
+      						<th scope="col">ЧТ</th>
+      						<th scope="col">ПТ</th>
+      						<th scope="col">СБ</th>
+      						<th scope="col">ВС</th>
+    					</tr>
+  				  	</thead>
+				  	<tbody>
+				    	<tr>
+				      		<td>08:00 - 17:00</td>
+				      		<td>08:00 - 17:00</td>
+				      		<td>08:00 - 17:00</td>
+				      		<td>08:00 - 17:00</td>
+				      		<td>08:00 - 17:00</td>
+				      		<td>08:00 - 17:00</td>
+				      		<td> - </td>
+				    	</tr>
+				  	</tbody>
 				</table>
+
 				<div style="height: 30px"></div>
 
 				<h3 class="jumbotron-heading">Автострахование</h3>
@@ -166,25 +179,59 @@
 		  		<div style="height: 30px"></div>
 
 		  		<h3 class="jumbotron-heading">Стоимость проверки</h3>
-		  		<table class="table">
+		  		<table class="table table-hover">
 				  <thead>
-				    <tr>
+				    <tr class="table-info">
 				      <th scope="col">Тип транспорта</th>
+				      <th scope="col">Категория ТС</th>
 				      <th scope="col">Цена</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr>
 				      <td>Легковые автомобили</td>
-				      <td>661</td>
+				      <td>M1</td>
+				      <td>380</td>
 				    </tr>
 				    <tr>
-				      <td>Грузовые автомобили до 3.5 тонн</td>
-				      <td>694</td>
+				      <td>Автобус до 5 тонн</td>
+				      <td>M2</td>
+				      <td>684</td>
 				    </tr>
 				    <tr>
-				      <td>Грузовые автомобили от 3.5 до 12 тонн</td>
-				      <td>981</td>
+				      <td>Автобус свыше 5 тонн</td>
+				      <td>M3</td>
+				      <td>823</td>
+				    </tr>
+				    <tr>
+				      <td>Грузовой автомобиль до 3,5 тонн</td>
+				      <td>N1</td>
+				      <td>405</td>
+				    </tr>
+				    <tr>
+				      <td>Грузовой автомобиль от 3,5 до 12 тонн</td>
+				      <td>N2</td>
+				      <td>798</td>
+				    </tr>
+				    <tr>
+				      <td>Автомобиль свыше 12 тонн</td>
+				      <td>N3</td>
+				      <td>861</td>
+				    </tr>
+				    <tr>
+				      <td>Прицепы до 3,5 тонн</td>
+				      <td>O1, O2</td>
+				      <td>316</td>
+				    </tr>
+				    <tr>
+				      <td>Прицепы свыше 3,5 тонн</td>
+				      <td>O3, O4</td>
+				      <td>557</td>
+				    </tr>
+				    <tr>
+				      <td>Мототранспортные средства</td>
+				      <td>L</td>
+				      <td>126</td>
 				    </tr>
 				  </tbody>
 				</table>
@@ -401,6 +448,31 @@
 			// execute above function
 			initPhotoSwipeFromDOM('.my-gallery');
 		</script>
+
+		<script type="text/javascript">
+			ymaps.ready(init);
+			var ymap;
+			function init () {
+			    var ymap = new ymaps.Map("map", {
+			        center: [
+						53.506592, 
+			        	42.601363
+			        ],
+			        zoom: 12,
+			        controls: ['smallMapDefaultSet'],
+			    });
+			    ymap.behaviors.disable("scrollZoom");
+
+			    placemark = new ymaps.Placemark([53.506592, 42.601363], {
+			        balloonContentHeader: "<div style=\"text-align:left\">Техосмотр в Земетчино</div>",
+			        balloonContentBody: "ул. Лермонтова, д. 37",
+			    }, {
+			        preset: "islands#redDotIcon",
+			    });
+
+			    ymap.geoObjects.add(placemark);
+			}
+    	</script>
 
   </body>
 </html>
