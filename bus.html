@@ -9,13 +9,7 @@
 
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   	
-  	<link rel="stylesheet" href="css/photoswipe.css"> 
-  	<link rel="stylesheet" href="css/default-skin/default-skin.css"> 
-
   	<link rel="stylesheet" href="css/album.css">
-
-  	<script src="js/photoswipe.min.js"></script> 
-		<script src="js/photoswipe-ui-default.min.js"></script> 
 
     <title>Техосмотр в Земетчино</title>
 
@@ -45,9 +39,7 @@
 		}
 	</script>
 
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=7bc89204-b3da-4373-9a31-0b204b1663d4&lang=ru_RU" type="text/javascript"></script>
-
-    <!-- Yandex.Metrika counter -->
+  <!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
 	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 	   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
@@ -74,52 +66,54 @@
 	    			</div>
 	  			</section>
 
-		  		<table class="table table-hover">
-				  <thead>
-				    <tr class="table-info">
-				    	<th scope="col">№</th>
-				      <th scope="col">Дата</th>
-				      <th scope="col">Время начала ТО</th>
-				      <th scope="col">Марка, модель</th>
-				      <th scope="col">Гос. номер</th>
-				      <th scope="col">Вид осмотра</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				    	<td>1</td>
-				      <td>14.01.25</td>
-				      <td>15:00</td>
-				      <td>ПАЗ 32053-70</td>
-				      <td>Р203КС58</td>
-				      <td></td>
-				    </tr>
-				    <tr>
-				    	<td>2</td>
-				      <td>15.01.25</td>
-				      <td>14:30</td>
-				      <td>ПАЗ 3205</td>
-				      <td>С173РК58</td>
-				      <td></td>
-				    </tr>
-				    <tr>
-				    	<td>3</td>
-				      <td>15.01.25</td>
-				      <td>15:40</td>
-				      <td>ГАЗ А67R43</td>
-				      <td>Т695АО58</td>
-				      <td></td>
-				    </tr>
-				    <tr>
-				    	<td>4</td>
-				      <td>17.01.25</td>
-				      <td>15:00</td>
-				      <td>Паз 320570-02</td>
-				      <td>С818ОХ58</td>
-				      <td></td>
-				    </tr>
-				  </tbody>
-				</table>
+	  			<table class="table table-hover">
+					  <thead>
+					    <tr class="table-info">
+					    	<th scope="col">№</th>
+					      <th scope="col">Дата</th>
+					      <th scope="col">Время начала ТО</th>
+					      <th scope="col">Марка, модель</th>
+					      <th scope="col">Гос. номер</th>
+					      <th scope="col">Вид осмотра</th>
+					    </tr>
+					  </thead>
+					  <tbody id="dataTable">
+					  </tbody>
+					</table>
+
+					<script src="js/data.js"></script>
+			    <script>
+			        document.addEventListener('DOMContentLoaded', () => {
+			            const dataTable = document.getElementById('dataTable');
+
+			            const today = new Date();
+			            today.setHours(0, 0, 0, 0);
+			            let currentId = 1;
+
+			            function parseDate(dateStr) {
+                		const [day, month, year] = dateStr.split('.');
+                		return new Date(`${year}-${month}-${day}`);
+            			}
+
+			            data
+			            .filter(record => {
+                    const recordDate = parseDate(record.date);
+                    return recordDate >= today;
+                	})
+			            .forEach(record => {
+			                const row = document.createElement('tr');
+			                row.innerHTML = `
+			                    <td>${currentId++}</td>
+			                    <td>${record.date}</td>
+			                    <td>${record.time}</td>
+			                		<td>${record.model}</td>
+			                		<td>${record.reg_num}</td>
+			                	  <td>${record.type}</td>
+			                `;
+			                dataTable.appendChild(row);
+			            });
+			        });
+			    </script>
 
 	  		<div style="height: 100px"></div>
 
